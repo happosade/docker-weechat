@@ -21,5 +21,5 @@ RUN apt-get update &&\
     apt-get install -y libcurl3-gnutls &&\
     rm -rf /var/lib/apt/lists/*
 
-CMD [ '/bin/weechat' ]
+CMD [ "/bin/weechat" ]
 
