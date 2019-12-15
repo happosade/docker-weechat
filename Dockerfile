@@ -7,9 +7,8 @@ RUN sed -Ei 's/^# deb-src /deb-src /' /etc/apt/sources.list
 RUN apt-get update &&\
     apt-get install -y git libv8-dev python3-dev &&\
     apt-get build-dep -y weechat
-RUN git clone --depth=1 https://github.com/weechat/weechat.git
-RUN mkdir /install
-RUN cd weechat && cmake -DCMAKE_INSTALL_PREFIX=/ -DENABLE_PHP=OFF -DENABLE_GUILE=OFF -DWEECHAT_HOME=/weechat -DENABLE_IRC=ON &&\
+RUN git clone https://github.com/weechat/weechat.git && cd weechat && git checkout v2.7
+RUN cd weechat && cmake -DCMAKE_INSTALL_PREFIX=/ -DENABLE_PHP=OFF -DENABLE_GUILE=OFF -DWEECHAT_HOME=/weechat -DCMAKE_BUILD_TYPE=Release &&\
     make && make install
 
 
