@@ -1,6 +1,6 @@
 FROM ubuntu:18.04 AS builder
 
-WORKDIR bulid/
+WORKDIR build/
 
 ENV DEBIAN_FRONTEND noninteractive
 RUN sed -Ei 's/^# deb-src /deb-src /' /etc/apt/sources.list
