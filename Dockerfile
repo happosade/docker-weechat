@@ -9,7 +9,7 @@ RUN apt-get update &&\
     apt-get build-dep -y weechat
 RUN git clone --depth=1 https://github.com/weechat/weechat.git
 RUN mkdir /install
-RUN cd weechat && cmake -DCMAKE_INSTALL_PREFIX=/ -DENABLE_PHP=OFF -DENABLE_GUILE=OFF -DWEECHAT_HOME=/weechat -DENABLE_IRC=ON &&\
+RUN cd weechat && cmake -DCMAKE_INSTALL_PREFIX=/ -DENABLE_PHP=OFF -DENABLE_GUILE=OFF -DWEECHAT_HOME=/weechat -DCMAKE_BUILD_TYPE=MinSizeRel &&\
     make && make install
 
 
@@ -32,7 +32,6 @@ RUN apt-get update &&\
     libperl5.26 &&\
     rm -rf /var/lib/apt/lists/*
 
-# RUN ln -s / /install
 USER 1000:1000
 WORKDIR /weechat
 CMD [ "/bin/weechat-headless" ]
