@@ -30,6 +30,7 @@ RUN apt-get update &&\
     libaspell15 \
     libtcl8.6 \
     libperl5.26 &&\
+    python3-websocket &&\
     rm -rf /var/lib/apt/lists/*
 
 USER 1000:1000
